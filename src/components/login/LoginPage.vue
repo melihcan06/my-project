@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { reactive } from 'vue'
+import { onMounted, reactive } from 'vue'
 import LoginService from './LoginService'
 
 const loginProperties = reactive({
@@ -15,6 +15,10 @@ async function execLogin() {
     location.href = '/'
   }
 }
+
+onMounted(() => {
+  LoginService.logout()
+})
 </script>
 
 <template>
