@@ -1,14 +1,19 @@
 <script setup lang="ts">
 import { reactive } from 'vue'
+import LoginService from './LoginService'
 
 const loginProperties = reactive({
   username: '',
   password: ''
 })
 
-function execLogin() {
+async function execLogin() {
   console.log(loginProperties.username)
   console.log(loginProperties.password)
+  const resp = await LoginService.login(loginProperties.username, loginProperties.password)
+  if (resp) {
+    location.href = '/'
+  }
 }
 </script>
 

@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import LoginPage from '../components/login/LoginPage.vue'
+import Consts from '@/models/Consts'
+import LoginService from '@/components/login/LoginService'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,11 +28,14 @@ const router = createRouter({
   ]
 })
 
-router.beforeEach((to) => {
+router.beforeEach((to, from) => {
   //TODO: test şimdilik
-  const isAuthorize = false //auth store dan bilgileri al otorizasyona bak, şimdilik böyle
+  //const isAuthorize = localStorage.getItem(Consts.StorageKeys.USER)
+  const isAuthorize = LoginService.isAuth()
   if (!isAuthorize && to.path != '/login') {
     location.href = '/login'
+  } else if (isAuthorize && to.path == '/login') {
+    location.href = from.path
   }
 })
 

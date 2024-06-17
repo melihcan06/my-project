@@ -1,6 +1,7 @@
 class Consts {
   StorageKeys = {
-    USER: 'user'
+    USER: 'user',
+    IS_AUTH: 'isAuth'
   }
 }
 
