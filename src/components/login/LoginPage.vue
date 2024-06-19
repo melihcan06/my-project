@@ -6,7 +6,7 @@ const props = defineProps<{
   doLogout: boolean
 }>()
 
-const { doLogout } = toRefs(props);
+const { doLogout } = toRefs(props)
 
 const loginProperties = reactive({
   username: '',
@@ -25,12 +25,13 @@ async function execLogin() {
 }
 
 async function execLogout() {
-  if () {
-  }
+  authStore.logout()
 }
 
 onMounted(() => {
-  //authStore.logout()
+  if (doLogout.value) {
+    execLogout()
+  }
 })
 </script>
 
