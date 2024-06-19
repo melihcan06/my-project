@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { onMounted, reactive } from 'vue'
-//import LoginService from '../../services/LoginService'
 import { useAuthStore } from '@/stores/authStore'
 
 const loginProperties = reactive({
@@ -8,17 +7,19 @@ const loginProperties = reactive({
   password: ''
 })
 
+const authStore = useAuthStore()
+
 async function execLogin() {
   console.log(loginProperties.username)
   console.log(loginProperties.password)
-  const resp = await useAuthStore.login(loginProperties.username, loginProperties.password)
-  if (resp) {
+  const isAuth = await authStore.login(loginProperties.username, loginProperties.password)
+  if (isAuth) {
     location.href = '/'
   }
 }
 
 onMounted(() => {
-  useAuthStore.logout()
+  //authStore.logout()
 })
 </script>
 

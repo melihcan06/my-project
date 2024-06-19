@@ -22,9 +22,10 @@ class AuthService {
     return JSON.parse(localStorage.getItem(Consts.StorageKeys.IS_AUTH) || 'false')
   }
 
-  logout() {
+  logout(): Promise<boolean> {
     localStorage.removeItem(Consts.StorageKeys.USER)
     localStorage.removeItem(Consts.StorageKeys.IS_AUTH)
+    return Promise.resolve(true)
   }
 
   getUser(): Promise<IUser | null> {

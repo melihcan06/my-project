@@ -5,6 +5,9 @@ import { RouterView } from 'vue-router'
 // function logout() {
 //   LoginService.logout()
 // }
+function test() {
+  //debugger
+}
 </script>
 
 <template>
@@ -17,6 +20,7 @@ import { RouterView } from 'vue-router'
     </nav>
   </div>
   <RouterView />
+  <button @click="test">TEST</button>
 </template>
 
 <style scoped></style>
