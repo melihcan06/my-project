@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import LoginPage from '../components/login/LoginPage.vue'
-import LoginService from '@/components/login/LoginService'
+import loginService from '../services/authService'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -22,7 +22,7 @@ const router = createRouter({
 router.beforeEach((to, from) => {
   //TODO: test şimdilik
   //const isAuthorize = localStorage.getItem(Consts.StorageKeys.USER)
-  const isAuthorize = LoginService.isAuth()
+  const isAuthorize = loginService.isAuth()
   if (!isAuthorize && to.path != '/login') {
     location.href = '/login'
   } else if (isAuthorize && to.path == '/login') {

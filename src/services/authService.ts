@@ -1,8 +1,8 @@
 import Consts from '@/models/Consts'
 import type { IUser } from '@/models/IUser'
 
-class LoginService {
-  async login(username: string, password: string): Promise<boolean> {
+class AuthService {
+  login(username: string, password: string): Promise<boolean> {
     //TODO: TEST şimdilik normalse servise git session bilgilerini al gel
     if (username === 'melih' && password === '12') {
       const currentUser: IUser = {
@@ -26,6 +26,15 @@ class LoginService {
     localStorage.removeItem(Consts.StorageKeys.USER)
     localStorage.removeItem(Consts.StorageKeys.IS_AUTH)
   }
+
+  getUser(): Promise<IUser | null> {
+    const user = localStorage.getItem(Consts.StorageKeys.USER)
+    if (user) {
+      return JSON.parse(user)
+    } else {
+      return Promise.resolve(null)
+    }
+  }
 }
 
-export default new LoginService()
+export default new AuthService()
