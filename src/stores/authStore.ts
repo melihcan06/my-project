@@ -1,16 +1,16 @@
-import loginService from '../services/authService'
+import authService from '@/services/authService'
 import { defineStore } from 'pinia'
 
 export const useAuthStore = defineStore('authStore', () => {
-  const user = loginService.getUser()
-  const isAuth = loginService.isAuth()
+  const user = authService.getUser()
+  const isAuth = authService.isAuth()
 
   const login = async (username: string, password: string) => {
-    return await loginService.login(username, password)
+    return await authService.login(username, password)
   }
 
   const logout = async () => {
-    await loginService.logout()
+    await authService.logout()
   }
 
   return {
