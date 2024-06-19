@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import LoginPage from '../components/login/LoginPage.vue'
-import authService from '../services/authService'
+import { useAuthStore } from '@/stores/authStore'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -20,12 +20,17 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from) => {
-  const isAuthorize = authService.isAuth()
-  if (!isAuthorize && to.path != '/login') {
+  const authStore = useAuthStore()
+  //debugger
+  if (!authStore.isAuth && to.path != '/login') {
     location.href = '/login'
-  } else if (isAuthorize && to.path == '/login') {
+  } else if (authStore.isAuth && to.path == '/login') {
     location.href = from.path
   }
+
+  /*if (to.meta.authRequired && !authStore.isAuth) {
+    location.href = '/login'
+  }*/
 })
 
 export default router
