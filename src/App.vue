@@ -6,7 +6,7 @@ import { RouterView } from 'vue-router'
   <div class="header">
     <nav>
       <RouterLink to="/">Home</RouterLink>
-      <RouterLink to="/login">Logout</RouterLink>
+      <RouterLink to="/login" props:{ doLogout="false" }>Logout</RouterLink>
     </nav>
   </div>
   <RouterView />

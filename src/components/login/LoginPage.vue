@@ -1,12 +1,11 @@
 <script setup lang="ts">
-import { onMounted, reactive, toRefs } from 'vue'
+import { onMounted, reactive } from 'vue'
 import { useAuthStore } from '@/stores/authStore'
 
-const props = defineProps<{
-  doLogout: boolean
+/*const props = defineProps<{
+  doLogout?: boolean
 }>()
-
-const { doLogout } = toRefs(props)
+const { doLogout } = toRefs(props)*/
 
 const loginProperties = reactive({
   username: '',
@@ -16,8 +15,6 @@ const loginProperties = reactive({
 const authStore = useAuthStore()
 
 async function execLogin() {
-  console.log(loginProperties.username)
-  console.log(loginProperties.password)
   const isAuth = await authStore.login(loginProperties.username, loginProperties.password)
   if (isAuth) {
     location.href = '/'
@@ -29,9 +26,9 @@ async function execLogout() {
 }
 
 onMounted(() => {
-  if (doLogout.value) {
-    execLogout()
-  }
+  //if (doLogout.value) {
+  execLogout()
+  //}
 })
 </script>
 
