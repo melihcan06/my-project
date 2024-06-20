@@ -22,7 +22,7 @@ async function execLogin() {
 }
 
 async function execLogout() {
-  authStore.logout()
+  await authStore.logout()
 }
 
 onMounted(() => {
