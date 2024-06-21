@@ -9,12 +9,20 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView
+      component: HomeView,
+      meta: {
+        layout: 'MainLayout',
+        authRequired: true
+      }
     },
     {
       path: '/login',
       name: 'login',
-      component: LoginPage
+      component: LoginPage,
+      meta: {
+        layout: 'LoginLayout',
+        authRequired: true
+      }
       //props: { doLogout: true }
     }
   ]
