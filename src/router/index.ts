@@ -21,21 +21,16 @@ const router = createRouter({
       component: LoginPage,
       meta: {
         layout: 'LoginLayout',
-        authRequired: true
+        authRequired: false
       }
       //props: { doLogout: true }
     }
   ]
 })
 
-router.beforeEach((to, from) => {
+router.beforeEach((to) => {
+  //from
   const authStore = useAuthStore()
-  /*if (!authStore.isAuth && to.path != '/login') {
-    location.href = '/login'
-  } else if (authStore.isAuth && to.path == '/login') {
-    location.href = from.path
-  }*/
-  console.log(from.path)
   if (to.meta.authRequired && !authStore.isAuth) {
     location.href = '/login'
   }

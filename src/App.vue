@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { defineAsyncComponent, ref, watch } from 'vue'
+import { defineAsyncComponent, shallowRef, watch } from 'vue'
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
-const layout = ref()
+const layout = shallowRef()
 
 watch(
   () => route.meta.layout,
