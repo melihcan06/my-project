@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { defineAsyncComponent, ref, watch } from 'vue'
-import { RouterView, useRoute } from 'vue-router'
+import { useRoute } from 'vue-router'
 
 const route = useRoute()
 const layout = ref()

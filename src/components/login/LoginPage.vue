@@ -34,7 +34,7 @@ onMounted(() => {
 
 <template>
   <div>
-    Login Page
+    <h3 style="font-weight: bold">Login Page</h3>
     <br />
     <label for="username">Username:</label>
     <input type="text" id="username" name="username" value="" v-model="loginProperties.username" />

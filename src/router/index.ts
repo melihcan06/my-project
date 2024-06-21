@@ -30,14 +30,15 @@ const router = createRouter({
 
 router.beforeEach((to, from) => {
   const authStore = useAuthStore()
-  if (!authStore.isAuth && to.path != '/login') {
+  /*if (!authStore.isAuth && to.path != '/login') {
     location.href = '/login'
   } else if (authStore.isAuth && to.path == '/login') {
     location.href = from.path
-  }
-  /*if (to.meta.authRequired && !authStore.isAuth) {
-    location.href = '/login'
   }*/
+  console.log(from.path)
+  if (to.meta.authRequired && !authStore.isAuth) {
+    location.href = '/login'
+  }
 })
 
 export default router
